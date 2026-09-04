@@ -6,7 +6,7 @@
         {
             Random random = new Random();
             int secretNumber = random.Next(1, 101);
-            
+
             List<int> guesses = new List<int>();
 
             while (true)
@@ -19,29 +19,30 @@
                 if (!isValidNumber)
                 {
                     Console.WriteLine("Invalid input. Please enter a whole number.");
+                    continue;
                 }
-                else if (guess < 1 || guess > 100)
+
+                if (guess < 1 || guess > 100)
                 {
                     Console.WriteLine("Invalid input. Please enter a number between 1 and 100.");
+                    continue;
+                }
+
+                guesses.Add(guess);
+
+                if (guess < secretNumber)
+                {
+                    Console.WriteLine("The correct number is higher.");
+                }
+                else if (guess > secretNumber)
+                {
+                    Console.WriteLine("The correct number is lower.");
                 }
                 else
                 {
-                    guesses.Add(guess);
-                    
-                    if (guess < secretNumber)
-                    {
-                        Console.WriteLine("The correct number is higher.");
-                    }
-                    else if (guess > secretNumber)
-                    {
-                        Console.WriteLine("The correct number is lower.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Correct! You guessed the number.");
-                        Console.WriteLine($"Your guesses : {string.Join(", ",  guesses)} ");
-                        break;
-                    }
+                    Console.WriteLine("Correct! You guessed the number.");
+                    Console.WriteLine($"Your guesses: {string.Join(", ", guesses)}");
+                    break;
                 }
             }
         }
