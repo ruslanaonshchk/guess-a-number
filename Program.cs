@@ -6,6 +6,8 @@
         {
             Random random = new Random();
             int secretNumber = random.Next(1, 101);
+            
+            List<int> guesses = new List<int>();
 
             while (true)
             {
@@ -24,6 +26,8 @@
                 }
                 else
                 {
+                    guesses.Add(guess);
+                    
                     if (guess < secretNumber)
                     {
                         Console.WriteLine("The correct number is higher.");
@@ -35,6 +39,7 @@
                     else
                     {
                         Console.WriteLine("Correct! You guessed the number.");
+                        Console.WriteLine($"Your guesses : {string.Join(", ",  guesses)} ");
                         break;
                     }
                 }
